@@ -42,33 +42,11 @@ function App() {
               </div>
               <div className="flex items-baseline py-8">
                 <div className="space-x-3.5 flex text-center text-sm leading-none font-bold text-gray-500">
-                  <label>
-                    <input className="w-6 text-black shadow-underline" name="size" type="radio" value="xs" checked />
-                    XS
-                  </label>
-                  <label>
-                    <input className="w-6" name="size" type="radio" value="s" />
-                    S
-                  </label>
-                  <label>
-                    <input className="w-6" name="size" type="radio" value="m" />
-                    M
-                  </label>
-                  <label>
-                    <input className="w-6" name="size" type="radio" value="l" />
-                    L
-                  </label>
-                  <label>
-                    <input className="w-6" name="size" type="radio" value="xl" />
-                    XL
-                  </label>
                 </div>
-                <div className="ml-auto text-xs underline">Size Guide</div>
               </div>
               <div className="flex space-x-3 text-sm font-bold uppercase mb-4">
                 <div className="flex-auto flex space-x-3">
-                  <button className="w-1/2 flex items-center justify-center bg-lime-300 text-black border border-black shadow-offset-black" type="submit">Buy now</button>
-                  <button className="w-1/2 flex items-center justify-center border border-black shadow-offset-black" type="button">Add to bag</button>
+                  <button className="w-full flex items-center justify-center bg-lime-300 text-black border border-black shadow-offset-black" type="submit">Add to watchlist</button>
                 </div>
                 <button className="flex-none flex items-center justify-center w-9 h-9 border border-black" type="button" aria-label="like">
                   <svg width="20" height="20" fill="currentColor">
@@ -77,7 +55,7 @@ function App() {
                 </button>
               </div>
               <p className="text-xs leading-5 text-gray-500">
-                Free shipping on all continental US orders.
+                User review {item.vote_count}
               </p>
             </form>
           </div>

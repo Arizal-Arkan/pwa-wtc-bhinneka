@@ -15,7 +15,7 @@ function App() {
           setItems(res.data.results)
         })
         .catch(err => {
-          prompt(err);
+          alert(err);
         })
     );
   }, []);
@@ -24,7 +24,7 @@ function App() {
     <div>
       {items.map((item, index) => {
         return (
-          <div className="flex p-6 font-mono">
+          <div className="flex p-6">
             <div className="flex-none w-40 relative">
               <img src={`https://image.tmdb.org/t/p/original${item.poster_path}`} alt="" className="absolute inset-0 w-full h-full object-cover border border-black shadow-offset-lime" />
             </div>

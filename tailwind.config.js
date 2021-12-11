@@ -30,8 +30,8 @@ module.exports = {
         500: "#a0aec0",
         600: "#718096",
         700: "#4a5568",
-        800: "#2d3748",
-        900: "#1a202c",
+        800: "#2B2F38",
+        900: "#20232A",
       },
       red: {
         100: "#fff5f5",
@@ -278,7 +278,7 @@ module.exports = {
     },
     fontFamily: {
       sans: [
-        '"Open Sans"'
+        '"Manrope"'
       ],
       serif: [
         "ui-serif",

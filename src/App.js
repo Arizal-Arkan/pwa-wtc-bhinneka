@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Offline from './component/Offline'
 
 function App() {
   const [items, setItems] = useState([]);
+  const [offline, setOffline] = React.useState(!navigator.onLine);
+
+  function handleOfflineStatus() {
+    setOffline(!navigator.onLine);
+  }
 
   useEffect(() => {
     return (
@@ -15,13 +21,27 @@ function App() {
           setItems(res.data.results)
         })
         .catch(err => {
-          alert(err);
+          console.error(err);
         })
     );
   }, []);
 
+  useEffect(function() {
+    handleOfflineStatus();
+    window.addEventListener('online', handleOfflineStatus);
+    window.addEventListener('offline', handleOfflineStatus);
+
+    return function() {
+      window.removeEventListener('online', handleOfflineStatus);
+      window.removeEventListener('offline', handleOfflineStatus);
+    }
+  }, [offline]);
+
+  console.log(offline);
+
   return (
     <div>
+      {offline && <Offline/>}
       {items.map((item, index) => {
         return (
           <div className="flex p-6">

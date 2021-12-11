@@ -72,7 +72,29 @@ registerRoute(
       })
     ]
   })
-)
+);
+
+registerRoute(
+  ({url}) => url.origin.includes("themoviedb.org"), new NetworkFirst({
+    cacheName: 'apidata',
+    plugins: [
+      new ExpirationPlugin({
+        maxAgeSeconds: 360,
+        maxEntries: 30
+      })
+    ]
+  })
+);
+
+registerRoute(
+  ({ url }) => url.origin.includes("image.tmdb.org") || /\.(jpe?g|png)$/i.test(url.pathname),
+  new StaleWhileRevalidate({
+    cacheName: 'imagesapi',
+    plugins: [
+      new ExpirationPlugin({ maxEntries: 50 }),
+    ],
+  })
+);
 
 self.addEventListener('install', function(e) {
   console.log('SW installing');

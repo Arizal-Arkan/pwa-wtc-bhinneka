@@ -9,6 +9,8 @@ import WatchList from './page/WatchList'
 
 function App() {
   const [items, setItems] = useState([]);
+  const [itemsNewMovie, setItemsNewMovie] = useState([]);
+  const [itemsTv, setitemsTv] = useState([]);
   const [offline, setOffline] = React.useState(!navigator.onLine);
 
   function handleOfflineStatus() {
@@ -18,12 +20,44 @@ function App() {
   useEffect(() => {
     return (
       axios({
-        url: "https://api.themoviedb.org/3/movie/580489?api_key=04a9ec5cdd2c8b4ee1d83b7fe5b2a1c7&append_to_response=videos,images,credits,release_dates",
+        url: "https://api.themoviedb.org/3/movie/popular?api_key=04a9ec5cdd2c8b4ee1d83b7fe5b2a1c7&language=en-US&page=1",
         method: "GET",
       })
         .then(res => {
           console.log(res);
           setItems(res)
+        })
+        .catch(err => {
+          console.error(err);
+        })
+    );
+  }, []);
+
+  useEffect(() => {
+    return (
+      axios({
+        url: "https://api.themoviedb.org/3/movie/upcoming?api_key=04a9ec5cdd2c8b4ee1d83b7fe5b2a1c7&language=en-US&page=1",
+        method: "GET",
+      })
+        .then(res => {
+          console.log(res);
+          setItemsNewMovie(res)
+        })
+        .catch(err => {
+          console.error(err);
+        })
+    );
+  }, []);
+
+  useEffect(() => {
+    return (
+      axios({
+        url: "https://api.themoviedb.org/3/tv/airing_today?api_key=04a9ec5cdd2c8b4ee1d83b7fe5b2a1c7&language=en-US&page=1",
+        method: "GET",
+      })
+        .then(res => {
+          console.log(res);
+          setitemsTv(res)
         })
         .catch(err => {
           console.error(err);
@@ -42,12 +76,10 @@ function App() {
     }
   }, [offline]);
 
-  console.log(items);
-
   return (
     <div className='bg-gray-900'>
       {offline && <Offline/>}
-      <Home/>
+      <Home featured={items?.data?.results} newMovie={itemsNewMovie?.data?.results} tvNew={itemsTv?.data?.results}/>
       <Footer/>
     </div>
   );

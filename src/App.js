@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Offline from './component/Offline'
 import DetailMovie from './page/DetailMovie'
-import WatchList from './page/WatchList'
+import Home from './page/Home'
 import Footer from './component/Footer'
+import WatchList from './page/WatchList'
 
 function App() {
   const [items, setItems] = useState([]);
@@ -40,16 +42,23 @@ function App() {
     }
   }, [offline]);
 
-  console.log(offline);
+  console.log(items);
 
   return (
     <div className='bg-gray-900'>
       {offline && <Offline/>}
-      {/* <DetailMovie items={items} /> */}
-      <WatchList />
+      <Home/>
       <Footer/>
     </div>
   );
 }
 
-export default App;
+export default function Routes() {
+  return (
+    <Router>
+      <Route path="/" exact component={App} />
+      <Route path="/detail/:id" exact component={DetailMovie} />
+      <Route path="/watchlist" exact component={WatchList} />
+    </Router>
+  )
+};

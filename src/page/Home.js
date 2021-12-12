@@ -4,6 +4,7 @@ import axios from 'axios';
 import './../css/home.css';
 import Slider from 'react-slick';
 
+import Menu from './../component/Menu';
 import SectionHero from './../component/SectionHero';
 import CardMovie from './../component/CardMovie';
 
@@ -96,11 +97,11 @@ function Home({ featured, newMovie, tvNew }) {
             </Slider>
 
             <button
-              class="button-glass button-glass-circle"
+              className="button-glass button-glass-circle"
               onClick={nextFeatured}
             >
               <div className="icon">
-                <span class="material-icons">chevron_right</span>
+                <span className="material-icons">chevron_right</span>
               </div>
             </button>
           </div>

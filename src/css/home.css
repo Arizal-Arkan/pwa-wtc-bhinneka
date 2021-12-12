@@ -1,6 +1,8 @@
 
 .section-main{
   padding: 100px 100px 50px 100px;
+  position: static;
+  z-index: 1;
 }
 .section-main .card-featured{
   background-color: #2B2F38;

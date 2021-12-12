@@ -9,7 +9,7 @@ import slide_1 from '../../slide_1.png';
 import slide_2 from '../../slide_2.png';
 
 function SectionHero(props) {
-  const { isDetail } = props;
+  const { isDetail, setIsMenuOpen } = props;
   const [currentSlideHero, setCurrentSlideHero] = useState(0);
 
   // custom slider hero
@@ -66,7 +66,7 @@ function SectionHero(props) {
           ))}
         </Slider>
         <div className="overlay-hero">
-          <Nav showSearch={true} />
+          <Nav showSearch={true} setIsMenuOpen={setIsMenuOpen} />
 
           <div className="movie-info">
             <h1>{sliderHero[currentSlideHero]?.title}</h1>
@@ -78,13 +78,13 @@ function SectionHero(props) {
 
           <div className="movie-action">
             <div className="user-action">
-              <button class="button-glass button-glass-icon">
-                <span class="material-icons">bookmark_border</span>
+              <button className="button-glass button-glass-icon">
+                <span className="material-icons">bookmark_border</span>
               </button>
-              <button class="button-glass button-glass-text-icon ml-4">
+              <button className="button-glass button-glass-text-icon ml-4">
                 Watch Trailer
                 <div className="icon">
-                  <span class="material-icons">play_circle</span>
+                  <span className="material-icons">play_circle</span>
                 </div>
               </button>
             </div>
@@ -92,23 +92,23 @@ function SectionHero(props) {
             {isDetail ? (
               <div className="movie-detail">
                 <p>Movie Detail</p>
-                <button class="button-glass button-glass-icon">
-                  <span class="material-icons">expand_more</span>
+                <button className="button-glass button-glass-icon">
+                  <span className="material-icons">expand_more</span>
                 </button>
               </div>
             ) : (
               <div className="slider-action">
                 <button
-                  class="button-glass button-glass-icon"
+                  className="button-glass button-glass-icon"
                   onClick={prevHero}
                 >
-                  <span class="material-icons">chevron_left</span>
+                  <span className="material-icons">chevron_left</span>
                 </button>
                 <button
-                  class="button-glass button-glass-icon ml-2"
+                  className="button-glass button-glass-icon ml-2"
                   onClick={nextHero}
                 >
-                  <span class="material-icons">chevron_right</span>
+                  <span className="material-icons">chevron_right</span>
                 </button>
               </div>
             )}

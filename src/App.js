@@ -8,6 +8,7 @@ import Footer from './component/Footer';
 import WatchList from './page/WatchList';
 import Movies from './page/Movies';
 import TVSeries from './page/TVSeries';
+import Search from './page/Search';
 
 function App() {
   const [items, setItems] = useState([]);
@@ -96,6 +97,7 @@ export default function Routes() {
       <Route path="/watchlist" exact component={WatchList} />
       <Route path="/movies" exact component={Movies} />
       <Route path="/tv-series" exact component={TVSeries} />
+      <Route path="/search" exact component={Search} />
     </Router>
   );
 }

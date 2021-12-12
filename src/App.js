@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Offline from './component/Offline'
 import DetailMovie from './page/DetailMovie'
+import WatchList from './page/WatchList'
+import Footer from './component/Footer'
 
 function App() {
   const [items, setItems] = useState([]);
@@ -14,7 +16,7 @@ function App() {
   useEffect(() => {
     return (
       axios({
-        url: "https://api.themoviedb.org/3/movie/438631?api_key=04a9ec5cdd2c8b4ee1d83b7fe5b2a1c7&append_to_response=videos,images,credits",
+        url: "https://api.themoviedb.org/3/movie/580489?api_key=04a9ec5cdd2c8b4ee1d83b7fe5b2a1c7&append_to_response=videos,images,credits,release_dates",
         method: "GET",
       })
         .then(res => {
@@ -43,7 +45,9 @@ function App() {
   return (
     <div className='bg-gray-900'>
       {offline && <Offline/>}
-      <DetailMovie items={items} />
+      {/* <DetailMovie items={items} /> */}
+      <WatchList />
+      <Footer/>
     </div>
   );
 }

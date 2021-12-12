@@ -75,6 +75,19 @@ registerRoute(
 );
 
 registerRoute(
+  ({url}) => url.origin === 'https://fonts.googleapis.com/icon', 
+  new NetworkFirst({
+    cacheName: 'icon',
+    plugins: [
+      new ExpirationPlugin({
+        maxAgeSeconds: 60 * 60 * 24 * 350,
+        maxEntries: 30
+      })
+    ]
+  })
+);
+
+registerRoute(
   ({url}) => url.origin.includes("themoviedb.org"), new NetworkFirst({
     cacheName: 'apidata',
     plugins: [
@@ -90,6 +103,16 @@ registerRoute(
   ({ url }) => url.origin.includes("image.tmdb.org") || /\.(jpe?g|png)$/i.test(url.pathname),
   new StaleWhileRevalidate({
     cacheName: 'imagesapi',
+    plugins: [
+      new ExpirationPlugin({ maxEntries: 50 }),
+    ],
+  })
+);
+
+registerRoute(
+  ({ url }) => url.origin.includes("i.ytimg.com") || /\.(jpe?g|png)$/i.test(url.pathname),
+  new StaleWhileRevalidate({
+    cacheName: 'imagesYt',
     plugins: [
       new ExpirationPlugin({ maxEntries: 50 }),
     ],

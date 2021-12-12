@@ -52,7 +52,7 @@ function App() {
   useEffect(() => {
     return (
       axios({
-        url: "https://api.themoviedb.org/3/tv/airing_today?api_key=04a9ec5cdd2c8b4ee1d83b7fe5b2a1c7&language=en-US&page=1",
+        url: "https://api.themoviedb.org/3/movie/top_rated?api_key=04a9ec5cdd2c8b4ee1d83b7fe5b2a1c7&language=en-US&page=1",
         method: "GET",
       })
         .then(res => {

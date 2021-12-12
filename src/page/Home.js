@@ -1,10 +1,8 @@
 import React, { useRef } from 'react';
 import { useHistory } from 'react-router-dom'
-import axios from 'axios';
 import './../css/home.css';
 import Slider from 'react-slick';
 
-import Menu from './../component/Menu';
 import SectionHero from './../component/SectionHero';
 import CardMovie from './../component/CardMovie';
 
@@ -19,17 +17,7 @@ function Home({ featured, newMovie, tvNew }) {
 
   const _handleDetail = (item) => {
     console.log(item);
-    axios({
-      url: `https://api.themoviedb.org/3/movie/${item.id}?api_key=04a9ec5cdd2c8b4ee1d83b7fe5b2a1c7&append_to_response=videos,images,credits,release_dates`,
-      method: "GET",
-    })
-      .then(res => {
-        console.log(res);
-        history.push({ pathname: `/detail/${item.id}` });
-      })
-      .catch(err => {
-        console.error(err);
-      })
+    history.push({ pathname: `/detail/${item.id}`, state: { movie: item } });
   }
 
   console.log(featured);
@@ -121,7 +109,7 @@ function Home({ featured, newMovie, tvNew }) {
           >
             {newMovie && newMovie.map((val, i) => {
                 return i < 12 ? ( 
-                  <CardMovie margin="0px 12px" items={val} propKey={i}/>
+                  <CardMovie margin="0px 12px" items={val} propKey={i} detailMov={() => _handleDetail(val)}/>
                 ) : false;
               })}
           </div>
@@ -141,7 +129,7 @@ function Home({ featured, newMovie, tvNew }) {
           >
             {tvNew && tvNew.map((val, i) => {
                 return i < 12 ? (
-                  <CardMovie margin="0px 12px" items={val} propKey={i}/>
+                  <CardMovie margin="0px 12px" items={val} propKey={i} detailMov={() => _handleDetail(val)}/>
                 ) : false 
               })}
           </div>

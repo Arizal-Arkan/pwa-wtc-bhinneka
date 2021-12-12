@@ -1,12 +1,16 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom'
 import './../css/home.css';
 import Slider from 'react-slick';
+import Menu from '../component/Menu'
+import Footer from '../component/Footer'
 
 import SectionHero from './../component/SectionHero';
 import CardMovie from './../component/CardMovie';
 
 function Home({ featured, newMovie, tvNew }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   // custom slider featured
   const customSliderFeatured = useRef(null);
   const nextFeatured = () => {
@@ -65,7 +69,8 @@ function Home({ featured, newMovie, tvNew }) {
 
   return (
     <>
-      <SectionHero isDetail={false} />
+      <Menu open={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      <SectionHero isDetail={false} setIsMenuOpen={setIsMenuOpen} />
 
       <div id="section-main" className="section-main">
         <div className="card-featured">
@@ -77,11 +82,17 @@ function Home({ featured, newMovie, tvNew }) {
               className="slider-featured"
               {...sliderFeaturedSetting}
             >
-              {featured && featured.map((val, i) => {
-                return (
-                  <CardMovie margin="0px 12px" items={val} propKey={i} detailMov={() => _handleDetail(val)}/>
-                );
-              })}
+              {featured &&
+                featured.map((val, i) => {
+                  return (
+                    <CardMovie
+                      margin="0px 12px"
+                      items={val}
+                      propKey={i}
+                      detailMov={() => _handleDetail(val)}
+                    />
+                  );
+                })}
             </Slider>
 
             <button
@@ -116,7 +127,7 @@ function Home({ featured, newMovie, tvNew }) {
         </div>
 
         <div className="section-new">
-          <h3>Tv New Release</h3>
+          <h3>Top rated</h3>
           <div
             className="
               grid gap-4 
@@ -125,15 +136,18 @@ function Home({ featured, newMovie, tvNew }) {
               md:grid-cols-4 
               sm:grid-cols-3
               grid-cols-2
+              mb-16
             "
           >
-            {tvNew && tvNew.map((val, i) => {
+            {tvNew &&
+              tvNew.map((val, i) => {
                 return i < 12 ? (
                   <CardMovie margin="0px 12px" items={val} propKey={i} detailMov={() => _handleDetail(val)}/>
                 ) : false 
               })}
           </div>
         </div>
+      <Footer />
       </div>
     </>
   );

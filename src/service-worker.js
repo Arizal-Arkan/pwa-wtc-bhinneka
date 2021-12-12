@@ -87,6 +87,20 @@ registerRoute(
   })
 );
 
+
+
+registerRoute(
+  ({url}) => url.origin.includes("https://cdnjs.cloudflare.com") || url.origin === 'https://cdnjs.cloudflare.com', new NetworkFirst({
+    cacheName: 'reactSlick',
+    plugins: [
+      new ExpirationPlugin({
+        maxAgeSeconds: 360,
+        maxEntries: 30
+      })
+    ]
+  })
+);
+
 registerRoute(
   ({url}) => url.origin.includes("themoviedb.org"), new NetworkFirst({
     cacheName: 'apidata',

@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import './FormSearch.css';
+import { useHistory } from 'react-router-dom';
 
 function FormSearch(props) {
   const { width } = props;
+  const history = useHistory();
 
   const [search, setSearch] = useState('');
   const handleChangeSearch = (event) => {
@@ -10,7 +12,7 @@ function FormSearch(props) {
   };
   const handleSubmitSearch = (event) => {
     event.preventDefault();
-    console.log('lol', search);
+    // history.push(`/search/search=${search}`);
   };
 
   return (

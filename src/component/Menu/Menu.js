@@ -1,4 +1,5 @@
 import './Menu.css';
+import { Link } from 'react-router-dom';
 
 import slide_2 from '../../slide_2.png';
 
@@ -24,33 +25,41 @@ function Menu(props) {
           <img src={slide_2} alt="poster" />
         </div>
         <div className="menu-half menu-right">
-          <div className="menu-list active">
-            <a href="/home">Home</a>
-            <div className="icon">
-              <span className="material-icons">arrow_forward</span>
+          <Link to="/">
+            <div className="menu-list active">
+              <a href="/home">Home</a>
+              <div className="icon">
+                <span className="material-icons">arrow_forward</span>
+              </div>
             </div>
-          </div>
+          </Link>
 
-          <div className="menu-list">
-            <a href="/movie">Movies</a>
-            <div className="icon">
-              <span className="material-icons">arrow_forward</span>
+          <Link to="/movies">
+            <div className="menu-list">
+              <a href="/movies">Movies</a>
+              <div className="icon">
+                <span className="material-icons">arrow_forward</span>
+              </div>
             </div>
-          </div>
+          </Link>
 
-          <div className="menu-list">
-            <a href="/tv-series">TV Series</a>
-            <div className="icon">
-              <span className="material-icons">arrow_forward</span>
+          <Link to="/tv-series">
+            <div className="menu-list">
+              <a href="/tv-series">TV Series</a>
+              <div className="icon">
+                <span className="material-icons">arrow_forward</span>
+              </div>
             </div>
-          </div>
+          </Link>
 
-          <div className="menu-list">
-            <a href="/watchlist">Watchlist</a>
-            <div className="icon">
-              <span className="material-icons">arrow_forward</span>
+          <Link to="/watchlist">
+            <div className="menu-list">
+              <a href="/watchlist">Watchlist</a>
+              <div className="icon">
+                <span className="material-icons">arrow_forward</span>
+              </div>
             </div>
-          </div>
+          </Link>
         </div>
       </div>
     </>

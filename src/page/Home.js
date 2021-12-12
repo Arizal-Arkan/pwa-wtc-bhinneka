@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { useHistory } from 'react-router-dom'
+import React, { useRef, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import './../css/home.css';
 import Slider from 'react-slick';
@@ -9,6 +9,8 @@ import SectionHero from './../component/SectionHero';
 import CardMovie from './../component/CardMovie';
 
 function Home({ featured, newMovie, tvNew }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   // custom slider featured
   const customSliderFeatured = useRef(null);
   const nextFeatured = () => {
@@ -21,16 +23,16 @@ function Home({ featured, newMovie, tvNew }) {
     console.log(item);
     axios({
       url: `https://api.themoviedb.org/3/movie/${item.id}?api_key=04a9ec5cdd2c8b4ee1d83b7fe5b2a1c7&append_to_response=videos,images,credits,release_dates`,
-      method: "GET",
+      method: 'GET',
     })
-      .then(res => {
+      .then((res) => {
         console.log(res);
         history.push({ pathname: `/detail/${item.id}` });
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err);
-      })
-  }
+      });
+  };
 
   console.log(featured);
 
@@ -77,7 +79,8 @@ function Home({ featured, newMovie, tvNew }) {
 
   return (
     <>
-      <SectionHero isDetail={false} />
+      <Menu open={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      <SectionHero isDetail={false} setIsMenuOpen={setIsMenuOpen} />
 
       <div id="section-main" className="section-main">
         <div className="card-featured">
@@ -89,11 +92,17 @@ function Home({ featured, newMovie, tvNew }) {
               className="slider-featured"
               {...sliderFeaturedSetting}
             >
-              {featured && featured.map((val, i) => {
-                return (
-                  <CardMovie margin="0px 12px" items={val} propKey={i} detailMov={() => _handleDetail(val)}/>
-                );
-              })}
+              {featured &&
+                featured.map((val, i) => {
+                  return (
+                    <CardMovie
+                      margin="0px 12px"
+                      items={val}
+                      propKey={i}
+                      detailMov={() => _handleDetail(val)}
+                    />
+                  );
+                })}
             </Slider>
 
             <button
@@ -119,10 +128,13 @@ function Home({ featured, newMovie, tvNew }) {
               grid-cols-2
             "
           >
-            {newMovie && newMovie.map((val, i) => {
-                return i < 12 ? ( 
-                  <CardMovie margin="0px 12px" items={val} propKey={i}/>
-                ) : false;
+            {newMovie &&
+              newMovie.map((val, i) => {
+                return i < 12 ? (
+                  <CardMovie margin="0px 12px" items={val} propKey={i} />
+                ) : (
+                  false
+                );
               })}
           </div>
         </div>
@@ -139,10 +151,13 @@ function Home({ featured, newMovie, tvNew }) {
               grid-cols-2
             "
           >
-            {tvNew && tvNew.map((val, i) => {
+            {tvNew &&
+              tvNew.map((val, i) => {
                 return i < 12 ? (
-                  <CardMovie margin="0px 12px" items={val} propKey={i}/>
-                ) : false 
+                  <CardMovie margin="0px 12px" items={val} propKey={i} />
+                ) : (
+                  false
+                );
               })}
           </div>
         </div>

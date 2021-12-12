@@ -1,11 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import './../css/home.css';
 
 import Nav from './../component/Nav';
 import Menu from './../component/Menu';
 import CardMovie from './../component/CardMovie';
 
-function WatchList({ featured, newMovie, tvNew }) {
+function WatchList() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <>

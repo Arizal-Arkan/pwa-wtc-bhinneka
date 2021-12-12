@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import './FormSearch.css';
-import { useHistory } from 'react-router-dom';
 
 function FormSearch(props) {
   const { width } = props;
-  const history = useHistory();
 
   const [search, setSearch] = useState('');
   const handleChangeSearch = (event) => {

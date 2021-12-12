@@ -1,7 +1,3 @@
-*{
-  /* border: 1px solid black !important; */
-  box-sizing: border-box;
-}
 .section-hero{
   width: 100%;
   height: 100vh;
@@ -67,6 +63,25 @@ nav .left-nav{
 }
 .button-glass-text-icon .icon{
   margin-left: 10px;
+}
+.button-glass-circle{
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+.button-glass-circle .icon{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: white;
+}
+.button-glass-circle .icon span{
+  color: #2B2F38;
 }
 .logo{
   margin-left: 50px;
@@ -141,4 +156,47 @@ nav .left-nav{
   font-weight: 600;
   font-size: 25px;
   color: #FFFFFF;
+  margin-bottom: 30px;
+}
+.section-main .card-featured .slider-featured-frame{
+  position: relative;
+}
+.section-main .card-featured .slider-featured-frame .slider-featured{
+  margin: 0 -12px 0 -17px;
+}
+.section-main .card-featured .slider-featured-frame button{
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  right: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.section-new h3{
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 25px;
+  color: #FFFFFF;
+  margin-top: 100px;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 900px) {
+  .section-main{
+    padding: 100px 80px 50px 80px;
+  }
+}
+@media (max-width: 768px) {
+  .section-main{
+    padding: 100px 65px 50px 65px;
+  }
+}
+@media (max-width: 640px) {
+  .section-main{
+    padding: 30px;
+  }
+  .section-main .card-featured{
+    padding: 30px;
+  }
 }

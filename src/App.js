@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Offline from './component/Offline';
 import Home from './page/Home';
+import './style.css';
 
 function App() {
   const [items, setItems] = useState([]);

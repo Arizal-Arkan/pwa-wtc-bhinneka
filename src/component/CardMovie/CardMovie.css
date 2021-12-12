@@ -1,0 +1,36 @@
+.card-movie{
+}
+.card-movie img{
+  width: 100%;
+  border-radius: 20px;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+.card-movie h4{
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14.6278px;
+  color: #FFFFFF;
+  margin-top: 10px;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.card-movie p{
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12.7993px;
+  color: rgba(255, 255, 255, 0.65);
+
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

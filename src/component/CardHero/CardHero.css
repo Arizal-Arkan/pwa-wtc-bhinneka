@@ -1,0 +1,10 @@
+.card-hero{
+  width: 100%;
+  height: 100vh;
+  background: blue;
+}
+.card-hero img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

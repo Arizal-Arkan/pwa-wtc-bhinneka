@@ -1,0 +1,26 @@
+.form-search{
+  /* display: flex;
+  align-items: center; */
+  position: relative;
+  min-width: 250px;
+}
+.form-search input{
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(30px);
+  border-radius: 10px;
+  padding: 10px 50px 10px 17px;
+  width: 100%;
+  outline: none;
+}
+.form-search button{
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 35px;
+  height: 35px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
+}

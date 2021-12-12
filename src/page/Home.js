@@ -1,11 +1,15 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import './../css/home.css';
 import Slider from 'react-slick';
 
+import Menu from './../component/Menu';
 import SectionHero from './../component/SectionHero';
 import CardMovie from './../component/CardMovie';
 
 function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  console.log('isMenuOpen', isMenuOpen);
+
   // custom slider featured
   const customSliderFeatured = useRef(null);
   const nextFeatured = () => {
@@ -56,7 +60,8 @@ function Home() {
 
   return (
     <>
-      <SectionHero isDetail={true} />
+      <Menu open={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      <SectionHero isDetail={true} setIsMenuOpen={setIsMenuOpen} />
 
       <div id="section-main" className="section-main">
         <div className="card-featured">
@@ -83,11 +88,11 @@ function Home() {
             </Slider>
 
             <button
-              class="button-glass button-glass-circle"
+              className="button-glass button-glass-circle"
               onClick={nextFeatured}
             >
               <div className="icon">
-                <span class="material-icons">chevron_right</span>
+                <span className="material-icons">chevron_right</span>
               </div>
             </button>
           </div>

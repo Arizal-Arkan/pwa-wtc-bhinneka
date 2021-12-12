@@ -18,7 +18,7 @@ function App() {
       method: 'GET',
     })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setItems(res);
       })
       .catch((err) => {
@@ -40,7 +40,7 @@ function App() {
     [offline]
   );
 
-  console.log(offline);
+  // console.log(offline);
 
   return (
     <div className="bg-gray-900">

@@ -29,7 +29,7 @@ function FormSearch(props) {
           placeholder="Search..."
         />
         <button type="submit">
-          <span class="material-icons">search</span>
+          <span className="material-icons">search</span>
         </button>
       </form>
     </>

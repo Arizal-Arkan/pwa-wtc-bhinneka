@@ -24,3 +24,8 @@
   align-items: center;
   margin-right: 10px;
 }
+@media (max-width: 640px) {
+  .form-search{
+    display: none;
+  }
+}

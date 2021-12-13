@@ -150,3 +150,26 @@ nav .left-nav{
   font-size: 24px;
   color: #FFFFFF;
 }
+
+@media (max-width: 900px) {
+  .section-hero .overlay-hero{
+    padding: 80px;
+  }
+}
+@media (max-width: 768px) {
+  .section-hero .overlay-hero{
+    padding: 65px;
+  }
+  .section-hero .overlay-hero .movie-info{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .section-hero .overlay-hero .movie-info h1{
+    max-width: unset;
+  }
+}
+@media (max-width: 640px) {
+  .section-hero .overlay-hero{
+    padding: 30px;
+  }
+}

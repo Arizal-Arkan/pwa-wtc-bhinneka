@@ -1,4 +1,5 @@
 import './Nav.css';
+import { Link } from 'react-router-dom'
 
 import FormSearch from './../FormSearch';
 
@@ -14,9 +15,9 @@ function Nav(props) {
           >
             <span className="material-icons">notes</span>
           </button>
-          <span className="logo">
+          <Link to={'/'} className="logo">
             Watch<b>Lur</b>
-          </span>
+          </Link>
         </div>
         {showSearch ? <FormSearch /> : ''}
       </nav>

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import slide_2 from '../../slide_2.png';
 
 function Menu(props) {
-  const { open, setIsMenuOpen } = props;
+  const { open, setIsMenuOpen, posterMovie } = props;
 
   return (
     <>
@@ -22,7 +22,7 @@ function Menu(props) {
           </button>
         </div>
         <div className="menu-half menu-left">
-          <img src={slide_2} alt="poster" />
+          <img src={posterMovie !== undefined ? `https://image.tmdb.org/t/p/original${posterMovie}` : slide_2} alt="poster" />
         </div>
         <div className="menu-half menu-right">
           <Link to="/">
@@ -43,14 +43,14 @@ function Menu(props) {
             </div>
           </Link>
 
-          <Link to="/tv-series">
+          {/* <Link to="/tv-series">
             <div className="menu-list">
               <a href="/tv-series">TV Series</a>
               <div className="icon">
                 <span className="material-icons">arrow_forward</span>
               </div>
             </div>
-          </Link>
+          </Link> */}
 
           <Link to="/watchlist">
             <div className="menu-list">

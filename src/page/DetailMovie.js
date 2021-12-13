@@ -8,13 +8,16 @@ import './../css/home.css';
 import { useLocation } from 'react-router-dom';
 import CardMovie from './../component/CardMovie';
 import Footer from './../component/Footer';
-import SectionHero from '../component/SectionHero'
+import SectionHero from '../component/SectionHero';
+import Menu from '../component/Menu';
+
 
 function DetailMovie() {
     const location = useLocation();
     const movId = location?.state?.movie?.id;
     const [isMovie, setMovie] = React.useState([]);
     const [isMovieRelated, setMovieRelated] = React.useState([]);
+    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
     const dateMovie = new Date(isMovie?.release_date);
     let director = [];
     let story = [];
@@ -25,6 +28,7 @@ function DetailMovie() {
     const _handleDetail = (item) => {
         console.log(item);
         history.push({ pathname: `/detail/${item.id}`, state: { movie: item } });
+        document.getElementById('section-hero').scrollIntoView({ behavior: 'smooth' })
     }
 
     const sliderFeaturedSettingVideo = {
@@ -171,8 +175,9 @@ function DetailMovie() {
 
     return (
         <>
-          <SectionHero isDetail={true} />
-            <div className='p-28'>
+         <Menu open={isMenuOpen} setIsMenuOpen={setIsMenuOpen} posterMovie={isMovie?.poster_path} />
+          <SectionHero isDetail={true} itemMovie={isMovie} setIsMenuOpen={setIsMenuOpen}/>
+            <div className='p-28' id="detail">
                 {/* Card Info Movie */}
                 <div className='flex bg-gray-800 m-auto p-10 items-center rounded-3xl'>
                     <div className='w-1/4 mr-10 flex-none'><img className='w-full h-full object-cover rounded-lg' src={`https://image.tmdb.org/t/p/w500${isMovie?.poster_path}`} alt="" /></div>

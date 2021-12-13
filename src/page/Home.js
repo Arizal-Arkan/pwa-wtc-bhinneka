@@ -22,6 +22,7 @@ function Home({ featured, newMovie, tvNew }) {
   const _handleDetail = (item) => {
     console.log(item);
     history.push({ pathname: `/detail/${item.id}`, state: { movie: item } });
+    document.getElementById('section-hero').scrollIntoView({ behavior: 'auto' })
   }
 
   console.log(featured);

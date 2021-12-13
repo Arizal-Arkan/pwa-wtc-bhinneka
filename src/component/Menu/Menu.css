@@ -73,3 +73,12 @@
 .menu .menu-right .menu-list .icon span{
   font-size: 2rem;
 }
+
+@media (max-width: 800px) {
+  .menu .menu-half{
+    width: 100%;
+  }
+  .menu .menu-left{
+    display: none;
+  }
+}

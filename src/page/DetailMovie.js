@@ -176,7 +176,7 @@ function DetailMovie() {
     return (
         <>
          <Menu open={isMenuOpen} setIsMenuOpen={setIsMenuOpen} posterMovie={isMovie?.poster_path} />
-          <SectionHero isDetail={true} itemMovie={isMovie} setIsMenuOpen={setIsMenuOpen}/>
+          <SectionHero isDetail={true} itemMovie={isMovie} setIsMenuOpen={setIsMenuOpen} />
             <div className='p-28' id="detail">
                 {/* Card Info Movie */}
                 <div className='flex bg-gray-800 m-auto p-10 items-center rounded-3xl'>

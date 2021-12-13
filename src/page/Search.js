@@ -1,16 +1,12 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import './../css/home.css';
 
 import Nav from './../component/Nav';
 import Menu from './../component/Menu';
 import CardMovie from './../component/CardMovie';
 
-function Movies({ featured, newMovie, tvNew }) {
+function Movies() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const history = useHistory();
-
-  console.log('history', history);
 
   return (
     <>

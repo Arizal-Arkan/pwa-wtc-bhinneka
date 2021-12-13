@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import './SectionHero.css';
 import Slider from 'react-slick';
 
@@ -11,6 +11,7 @@ import slide_2 from '../../slide_2.png';
 function SectionHero(props) {
   const { isDetail, setIsMenuOpen, itemMovie } = props;
   const [currentSlideHero, setCurrentSlideHero] = useState(0);
+  const [watchList, setWatchList] = useState([]);
 
   // custom slider hero
   const customSliderHero = useRef(null);
@@ -22,7 +23,27 @@ function SectionHero(props) {
   };
   // custom slider hero
 
-  console.log(itemMovie);
+  const cachedWatch = window.localStorage.getItem("watchlist");
+
+  useEffect(() => {
+    return () => {
+      console.info("useEffect for localStorage");
+    if (cachedWatch !== null) {
+      setWatchList(JSON.parse(cachedWatch));
+    }
+    }
+  }, [cachedWatch])
+
+  const _handleWatchList = () => {
+    console.log('item', watchList);
+    const arrWatch = []
+    const currentIndex = watchList.length;
+    const newWatch = [...watchList, { id: currentIndex + 1, itemMovie }];
+    arrWatch.push(itemMovie)
+    console.log(arrWatch);
+    setWatchList(newWatch);
+    localStorage.setItem('watchlist', JSON.stringify(arrWatch));
+}
 
   const sliderHero = [
     {
@@ -92,7 +113,7 @@ function SectionHero(props) {
 
           <div className="movie-action">
             <div className="user-action">
-              <button className="button-glass button-glass-icon">
+              <button className="button-glass button-glass-icon" onClick={() => _handleWatchList()}>
                 <span className="material-icons">bookmark_border</span>
               </button>
               <button className="button-glass button-glass-text-icon ml-4" onClick={() => _handleWtchDetail()}>

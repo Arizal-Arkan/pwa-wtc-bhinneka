@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './../css/home.css';
+import { useHistory } from 'react-router-dom'
 
 import Nav from './../component/Nav';
 import Menu from './../component/Menu';
@@ -7,6 +8,13 @@ import CardMovie from './../component/CardMovie';
 
 function WatchList() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const cachedWatch = window.localStorage.getItem("watchlist");
+  const watchList = JSON.parse(cachedWatch);
+  const history = useHistory();
+  const _handleDetail = (item) => {
+    history.push({ pathname: `/detail/${item.id}`, state: { movie: item } });
+}
+
   return (
     <>
       <Menu open={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
@@ -47,26 +55,14 @@ function WatchList() {
             grid-cols-2
           "
           >
-            {/* {newMovie &&
-            newMovie.map((val, i) => {
+            {watchList &&
+            watchList.map((val, i) => {
               return i < 12 ? (
-                <CardMovie margin="0px 12px" items={val} propKey={i} />
+                <CardMovie margin="0px 12px" items={val} propKey={i} detailMov={() => _handleDetail(val)}/>
               ) : (
                 false
               );
-            })} */}
-            <CardMovie />
-            <CardMovie />
-            <CardMovie />
-            <CardMovie />
-            <CardMovie />
-            <CardMovie />
-            <CardMovie />
-            <CardMovie />
-            <CardMovie />
-            <CardMovie />
-            <CardMovie />
-            <CardMovie />
+            })}
           </div>
         </div>
       </div>

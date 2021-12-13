@@ -172,4 +172,8 @@ nav .left-nav{
   .section-hero .overlay-hero{
     padding: 30px;
   }
+
+  .section-hero .overlay-hero .movie-action .movie-detail p{
+    display: none;
+  }
 }
